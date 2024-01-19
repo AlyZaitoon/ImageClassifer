@@ -1,0 +1,149 @@
+INFO: STARTING!
+INFO: Log parameter values verbosely: [0]
+INFO: Num threads: [1]
+INFO: Graph: [model_mobile_net_int8.tflite]
+INFO: Enable op profiling: [1]
+INFO: #threads used for CPU inference: [1]
+INFO: Loaded model model_mobile_net_int8.tflite
+INFO: The input model file size (MB): 2.85674
+INFO: Initialized session in 19.22ms.
+INFO: Running benchmark for at least 1 iterations and at least 0.5 seconds but terminate if exceeding 150 seconds.
+INFO: count=19 first=28824 curr=27893 min=25103 max=32136 avg=27229.5 std=2029
+
+INFO: Running benchmark for at least 50 iterations and at least 1 seconds but terminate if exceeding 150 seconds.
+INFO: count=50 first=26493 curr=26278 min=24266 max=28753 avg=26300.3 std=1008
+
+INFO: Inference timings in us: Init: 19220, First inference: 28824, Warmup (avg): 27229.5, Inference (avg): 26300.3
+INFO: Note: as the benchmark tool itself affects memory footprint, the following is only APPROXIMATE to the actual memory footprint of the model at runtime. Take the information at your discretion.
+INFO: Memory footprint delta from the start of the tool (MB): init=11.832 overall=15.5352
+INFO: Profiling Info for Benchmark Initialization:
+============================== Run Order ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	                 ModifyGraphWithDelegate	   12.460	   12.460	 99.188%	 99.188%	  4728.000	        1	ModifyGraphWithDelegate/0
+	                         AllocateTensors	    0.102	    0.102	  0.812%	100.000%	     0.000	        1	AllocateTensors/0
+
+============================== Top by Computation Time ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	                 ModifyGraphWithDelegate	   12.460	   12.460	 99.188%	 99.188%	  4728.000	        1	ModifyGraphWithDelegate/0
+	                         AllocateTensors	    0.102	    0.102	  0.812%	100.000%	     0.000	        1	AllocateTensors/0
+
+Number of nodes executed: 2
+============================== Summary by node type ==============================
+	                             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+	                 ModifyGraphWithDelegate	        1	    12.460	    99.188%	    99.188%	  4728.000	        1
+	                         AllocateTensors	        1	     0.102	     0.812%	   100.000%	     0.000	        1
+
+Timings (microseconds): count=1 curr=12562
+Memory (bytes): count=0
+2 nodes observed
+
+
+
+INFO: Operator-wise Profiling Info for Regular Benchmark Runs:
+============================== Run Order ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	                                QUANTIZE	    1.292	    1.319	  5.037%	  5.037%	     0.000	        1	[serving_default_input_1:0_int8]:0
+	                      Multiply (ND, QS8)	    0.067	    0.069	  0.264%	  5.301%	     0.000	        1	Delegate/Multiply (ND, QS8):0
+	                      Subtract (ND, QS8)	    0.045	    0.053	  0.203%	  5.504%	     0.000	        1	Delegate/Subtract (ND, QS8):1
+	           Convolution (NHWC, QC8) IGEMM	    2.037	    2.137	  8.161%	 13.666%	     0.000	        1	Delegate/Convolution (NHWC, QC8) IGEMM:2
+	          Convolution (NHWC, QC8) DWConv	    1.147	    1.258	  4.806%	 18.471%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:3
+	            Convolution (NHWC, QC8) GEMM	    0.584	    0.540	  2.064%	 20.535%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:4
+	            Convolution (NHWC, QC8) GEMM	    2.221	    1.987	  7.590%	 28.125%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:5
+	          Convolution (NHWC, QC8) DWConv	    0.836	    0.792	  3.025%	 31.150%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:6
+	            Convolution (NHWC, QC8) GEMM	    0.410	    0.402	  1.535%	 32.684%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:7
+	            Convolution (NHWC, QC8) GEMM	    0.860	    0.870	  3.322%	 36.006%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:8
+	          Convolution (NHWC, QC8) DWConv	    1.169	    1.159	  4.424%	 40.431%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:9
+	            Convolution (NHWC, QC8) GEMM	    0.594	    0.579	  2.212%	 42.643%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:10
+	                           Add (ND, QS8)	    0.034	    0.034	  0.130%	 42.773%	     0.000	        1	Delegate/Add (ND, QS8):11
+	            Convolution (NHWC, QC8) GEMM	    0.874	    0.878	  3.352%	 46.124%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:12
+	          Convolution (NHWC, QC8) DWConv	    0.287	    0.300	  1.144%	 47.269%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:13
+	            Convolution (NHWC, QC8) GEMM	    0.187	    0.188	  0.718%	 47.986%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:14
+	            Convolution (NHWC, QC8) GEMM	    0.349	    0.345	  1.316%	 49.303%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:15
+	          Convolution (NHWC, QC8) DWConv	    0.376	    0.378	  1.443%	 50.746%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:16
+	            Convolution (NHWC, QC8) GEMM	    0.243	    0.247	  0.941%	 51.687%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:17
+	                           Add (ND, QS8)	    0.011	    0.011	  0.044%	 51.731%	     0.000	        1	Delegate/Add (ND, QS8):18
+	            Convolution (NHWC, QC8) GEMM	    0.356	    0.339	  1.295%	 53.026%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:19
+	          Convolution (NHWC, QC8) DWConv	    0.378	    0.388	  1.483%	 54.509%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:20
+	            Convolution (NHWC, QC8) GEMM	    0.249	    0.241	  0.921%	 55.430%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:21
+	                           Add (ND, QS8)	    0.011	    0.011	  0.041%	 55.471%	     0.000	        1	Delegate/Add (ND, QS8):22
+	            Convolution (NHWC, QC8) GEMM	    0.347	    0.350	  1.338%	 56.809%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:23
+	          Convolution (NHWC, QC8) DWConv	    0.098	    0.095	  0.361%	 57.171%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:24
+	            Convolution (NHWC, QC8) GEMM	    0.124	    0.123	  0.471%	 57.642%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:25
+	            Convolution (NHWC, QC8) GEMM	    0.285	    0.281	  1.075%	 58.717%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:26
+	          Convolution (NHWC, QC8) DWConv	    0.180	    0.187	  0.714%	 59.431%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:27
+	            Convolution (NHWC, QC8) GEMM	    0.244	    0.232	  0.887%	 60.318%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:28
+	                           Add (ND, QS8)	    0.006	    0.005	  0.020%	 60.338%	     0.000	        1	Delegate/Add (ND, QS8):29
+	            Convolution (NHWC, QC8) GEMM	    0.289	    0.285	  1.088%	 61.426%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:30
+	          Convolution (NHWC, QC8) DWConv	    0.181	    0.187	  0.715%	 62.141%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:31
+	            Convolution (NHWC, QC8) GEMM	    0.235	    0.235	  0.896%	 63.037%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:32
+	                           Add (ND, QS8)	    0.005	    0.005	  0.020%	 63.057%	     0.000	        1	Delegate/Add (ND, QS8):33
+	            Convolution (NHWC, QC8) GEMM	    0.289	    0.287	  1.095%	 64.152%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:34
+	          Convolution (NHWC, QC8) DWConv	    0.190	    0.184	  0.702%	 64.855%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:35
+	            Convolution (NHWC, QC8) GEMM	    0.237	    0.243	  0.928%	 65.783%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:36
+	                           Add (ND, QS8)	    0.006	    0.006	  0.022%	 65.805%	     0.000	        1	Delegate/Add (ND, QS8):37
+	            Convolution (NHWC, QC8) GEMM	    0.282	    0.319	  1.217%	 67.022%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:38
+	          Convolution (NHWC, QC8) DWConv	    0.190	    0.188	  0.718%	 67.740%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:39
+	            Convolution (NHWC, QC8) GEMM	    0.356	    0.349	  1.331%	 69.071%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:40
+	            Convolution (NHWC, QC8) GEMM	    0.600	    0.595	  2.272%	 71.343%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:41
+	          Convolution (NHWC, QC8) DWConv	    0.281	    0.286	  1.091%	 72.435%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:42
+	            Convolution (NHWC, QC8) GEMM	    0.519	    0.537	  2.050%	 74.485%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:43
+	                           Add (ND, QS8)	    0.008	    0.009	  0.033%	 74.518%	     0.000	        1	Delegate/Add (ND, QS8):44
+	            Convolution (NHWC, QC8) GEMM	    0.625	    0.602	  2.299%	 76.818%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:45
+	          Convolution (NHWC, QC8) DWConv	    0.274	    0.293	  1.119%	 77.937%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:46
+	            Convolution (NHWC, QC8) GEMM	    0.551	    0.613	  2.342%	 80.279%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:47
+	                           Add (ND, QS8)	    0.008	    0.008	  0.031%	 80.310%	     0.000	        1	Delegate/Add (ND, QS8):48
+	            Convolution (NHWC, QC8) GEMM	    0.590	    0.601	  2.295%	 82.606%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:49
+	          Convolution (NHWC, QC8) DWConv	    0.070	    0.072	  0.273%	 82.879%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:50
+	            Convolution (NHWC, QC8) GEMM	    0.239	    0.278	  1.061%	 83.940%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:51
+	            Convolution (NHWC, QC8) GEMM	    0.417	    0.411	  1.569%	 85.509%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:52
+	          Convolution (NHWC, QC8) DWConv	    0.114	    0.124	  0.473%	 85.982%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:53
+	            Convolution (NHWC, QC8) GEMM	    0.472	    0.386	  1.473%	 87.455%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:54
+	                           Add (ND, QS8)	    0.004	    0.004	  0.014%	 87.468%	     0.000	        1	Delegate/Add (ND, QS8):55
+	            Convolution (NHWC, QC8) GEMM	    0.476	    0.409	  1.564%	 89.032%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:56
+	          Convolution (NHWC, QC8) DWConv	    0.115	    0.120	  0.459%	 89.491%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:57
+	            Convolution (NHWC, QC8) GEMM	    0.387	    0.376	  1.434%	 90.925%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:58
+	                           Add (ND, QS8)	    0.004	    0.003	  0.013%	 90.938%	     0.000	        1	Delegate/Add (ND, QS8):59
+	            Convolution (NHWC, QC8) GEMM	    0.427	    0.403	  1.537%	 92.476%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:60
+	          Convolution (NHWC, QC8) DWConv	    0.114	    0.120	  0.458%	 92.934%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:61
+	            Convolution (NHWC, QC8) GEMM	    0.774	    0.753	  2.877%	 95.810%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:62
+	            Convolution (NHWC, QC8) GEMM	    1.066	    1.044	  3.985%	 99.796%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:63
+	                         AVERAGE_POOL_2D	    0.049	    0.045	  0.172%	 99.968%	     0.000	        1	[predict/MobilenetV2/Logits/AvgPool]:65
+	                           Copy (NC, X8)	    0.001	    0.001	  0.004%	 99.972%	     0.000	        1	Delegate/Copy (NC, X8):0
+	          Fully Connected (NC, QS8) GEMM	    0.002	    0.002	  0.008%	 99.980%	     0.000	        1	Delegate/Fully Connected (NC, QS8) GEMM:1
+	                                 SOFTMAX	    0.002	    0.003	  0.011%	 99.990%	     0.000	        1	[StatefulPartitionedCall:0_int8]:68
+	                                QUANTIZE	    0.003	    0.003	  0.010%	100.000%	     0.000	        1	[StatefulPartitionedCall:0]:69
+
+============================== Top by Computation Time ==============================
+	                             [node type]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+	           Convolution (NHWC, QC8) IGEMM	    2.037	    2.137	  8.161%	  8.161%	     0.000	        1	Delegate/Convolution (NHWC, QC8) IGEMM:2
+	            Convolution (NHWC, QC8) GEMM	    2.221	    1.987	  7.590%	 15.751%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:5
+	                                QUANTIZE	    1.292	    1.319	  5.037%	 20.788%	     0.000	        1	[serving_default_input_1:0_int8]:0
+	          Convolution (NHWC, QC8) DWConv	    1.147	    1.258	  4.806%	 25.594%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:3
+	          Convolution (NHWC, QC8) DWConv	    1.169	    1.159	  4.424%	 30.018%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:9
+	            Convolution (NHWC, QC8) GEMM	    1.066	    1.044	  3.985%	 34.004%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:63
+	            Convolution (NHWC, QC8) GEMM	    0.874	    0.878	  3.352%	 37.355%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:12
+	            Convolution (NHWC, QC8) GEMM	    0.860	    0.870	  3.322%	 40.677%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:8
+	          Convolution (NHWC, QC8) DWConv	    0.836	    0.792	  3.025%	 43.702%	     0.000	        1	Delegate/Convolution (NHWC, QC8) DWConv:6
+	            Convolution (NHWC, QC8) GEMM	    0.774	    0.753	  2.877%	 46.579%	     0.000	        1	Delegate/Convolution (NHWC, QC8) GEMM:62
+
+Number of nodes executed: 70
+============================== Summary by node type ==============================
+	                             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+	            Convolution (NHWC, QC8) GEMM	       34	    16.309	    62.367%	    62.367%	     0.000	       34
+	          Convolution (NHWC, QC8) DWConv	       17	     6.122	    23.411%	    85.778%	     0.000	       17
+	           Convolution (NHWC, QC8) IGEMM	        1	     2.137	     8.172%	    93.950%	     0.000	        1
+	                                QUANTIZE	        2	     1.320	     5.048%	    98.998%	     0.000	        2
+	                           Add (ND, QS8)	       10	     0.091	     0.348%	    99.346%	     0.000	       10
+	                      Multiply (ND, QS8)	        1	     0.069	     0.264%	    99.610%	     0.000	        1
+	                      Subtract (ND, QS8)	        1	     0.053	     0.203%	    99.813%	     0.000	        1
+	                         AVERAGE_POOL_2D	        1	     0.045	     0.172%	    99.985%	     0.000	        1
+	                                 SOFTMAX	        1	     0.002	     0.008%	    99.992%	     0.000	        1
+	          Fully Connected (NC, QS8) GEMM	        1	     0.001	     0.004%	    99.996%	     0.000	        1
+	                           Copy (NC, X8)	        1	     0.001	     0.004%	   100.000%	     0.000	        1
+
+Timings (microseconds): count=50 first=26353 curr=26169 min=24149 max=28660 avg=26185 std=1008
+Memory (bytes): count=0
+70 nodes observed
+
+
+
